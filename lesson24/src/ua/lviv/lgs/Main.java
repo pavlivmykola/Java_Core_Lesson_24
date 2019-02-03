@@ -37,10 +37,11 @@ public class Main {
 			System.out.println("¬вед≥ть 2 щоб додати сеанс");
 			System.out.println("¬вед≥ть 3 щоб видалити ф≥льм");
 			System.out.println("¬вед≥ть 4 щоб видалити сеанс");
-			System.out.println("¬вед≥ть 5 щоб вивести список ф≥льм≥в");
-			System.out.println("¬вед≥ть 6 щоб вивести список сеанс≥в на день");
-			System.out.println("¬вед≥ть 7 щоб вивести розклад");
-			System.out.println("¬вед≥ть 8 ≥ б≥льше щоб вийти з програми");
+			System.out.println("¬вед≥ть 5 щоб видалити сеанс (виб≥р дн€ з≥ списку)");
+			System.out.println("¬вед≥ть 6 щоб вивести список ф≥льм≥в");
+			System.out.println("¬вед≥ть 7 щоб вивести список сеанс≥в на день");
+			System.out.println("¬вед≥ть 8 щоб вивести розклад");
+			System.out.println("¬вед≥ть 9 ≥ б≥льше щоб вийти з програми");
 			
 			Scanner sc = new Scanner(System.in);
 			int i = sc.nextInt();
@@ -64,7 +65,17 @@ public class Main {
 				Movie movie=Movie.chooseMovie();
 				cinema.removeMovie(movie);
 				break;
-			case 4:
+			case 4:	
+				System.out.println();
+				System.out.println("¬вед≥ть день сеансу, €кий потр≥бно видалити");
+				String dayName = sc.next();
+				for (Days day1:Days.values()){
+					if (day1.name().equals(dayName.toUpperCase())) {
+						cinema.removeSeance(day1);
+					}
+				} 
+				break;
+			case 5:
 				day = Days.getDay();
 				if (day==null) {
 					try {
@@ -76,10 +87,10 @@ public class Main {
 				}
 				else cinema.removeSeance(day);
 				break;
-			case 5:
+			case 6:
 				Movie.getMovieSet().stream().forEach(System.out::println);
 				break;
-			case 6:		
+			case 7:		
 				day = Days.getDay();
 				if (day==null) {
 					for (Days day1:Days.values()) {
@@ -94,7 +105,7 @@ public class Main {
 					cinema.getSchedule(schedule);
 				}	
 				break;
-			case 7:
+			case 8:
 				for (Days day1:Days.values()) {
 					System.out.println();
 					System.out.println(day1.name());

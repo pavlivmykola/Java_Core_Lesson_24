@@ -158,6 +158,7 @@ public class Cinema {
 			}	
 		}	
 	}
+
 	
 	public void removeSeanceForAllDays() throws TimeException{
 		int count=0;
